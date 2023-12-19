@@ -23,25 +23,28 @@ public class ClinicalCaseIndicator : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _titleCase;
     [SerializeField] private TextMeshProUGUI _descriptionCase;
 
-    
-
     private GameObject _currentCase;
-    private int _caseIndex;
+    private int _caseIndex = 0;
+
+    private void Awake()
+    {
+        _currentCase = _clinicalCasesContainer.GetChild(0).gameObject;
+    }
 
     public void UpdateCurrentCase()
     {
         SetCaseCompleted();
         _caseIndex ++;
         _currentCase = _clinicalCasesContainer.GetChild(_caseIndex).gameObject;
-        _currentCase.transform.GetChild(0).GetComponent<Image>().color = _currentBGColor;
-        _currentCase.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = new Color(0,0,0,0);
+        _currentCase.transform.GetChild(_caseIndex).GetComponent<Image>().color = _currentBGColor;
+        _currentCase.transform.GetChild(_caseIndex).GetChild(_caseIndex).GetComponent<Image>().color = new Color(0,0,0,0);
         setCurrentCaseDescription();
     }
 
     private void SetCaseCompleted()
     {
-        _currentCase.transform.GetChild(0).GetComponent<Image>().color = _completeBGColor;
-        _currentCase.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = new Color(1,1,1,1);
+        _currentCase.transform.GetChild(_caseIndex).GetComponent<Image>().color = _completeBGColor;
+        _currentCase.transform.GetChild(_caseIndex).GetChild(_caseIndex).GetComponent<Image>().color = new Color(1,1,1,1);
     }
 
     private void setCurrentCaseDescription()
