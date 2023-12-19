@@ -12,7 +12,7 @@ public class ClinicalCaseIndicator : MonoBehaviour
     private struct CaseDataText
     {
         public string Title;
-        public string Description;
+        [TextArea] public string Description;
     }
 
     [SerializeField] private List<CaseDataText> _casesDataText = new List<CaseDataText>();
@@ -29,12 +29,21 @@ public class ClinicalCaseIndicator : MonoBehaviour
     private void Awake()
     {
         _currentCase = _clinicalCasesContainer.GetChild(0).gameObject;
+        SetCurrentCase();
     }
 
+    //Set the current case as completed and configure the next one.
     public void UpdateCurrentCase()
     {
         SetCaseCompleted();
         _caseIndex ++;
+        SetCurrentCase();
+        
+    }
+
+    //configure the current case images and text
+    private void SetCurrentCase()
+    {
         _currentCase = _clinicalCasesContainer.GetChild(_caseIndex).gameObject;
         _currentCase.transform.GetChild(_caseIndex).GetComponent<Image>().color = _currentBGColor;
         _currentCase.transform.GetChild(_caseIndex).GetChild(_caseIndex).GetComponent<Image>().color = new Color(0,0,0,0);
