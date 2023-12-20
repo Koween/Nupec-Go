@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ScreenToWorldRaycast))]
-public class ScreenInteractions : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+public class ScreenInteractions : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerClickHandler
 {
     
     private Vector2 _dragStartPosition;
@@ -16,7 +16,7 @@ public class ScreenInteractions : MonoBehaviour, IBeginDragHandler, IDragHandler
     public UnityEvent OnTouchEvent, OnChnageDragDirectionEvent, OnDragDownToUp;
     public static ScreenInteractions Instance;
     private ScreenToWorldRaycast _screenToWorldRaycast;
-    private LayerMask layerMask = LayerMask.NameToLayer("InteractiveObject");
+    [SerializeField] private LayerMask layerMask;
 
     private void Awake()
     {
@@ -31,6 +31,7 @@ public class ScreenInteractions : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("PointerDown");
         if(_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask))
         OnTouchEvent?.Invoke();
     }
@@ -69,5 +70,12 @@ public class ScreenInteractions : MonoBehaviour, IBeginDragHandler, IDragHandler
         direction.Normalize();
         
         return direction;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("PointerClickDown");
+        if(_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask))
+        OnTouchEvent?.Invoke();
     }
 }

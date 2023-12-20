@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
@@ -11,6 +12,7 @@ public class InteractiveObject : MonoBehaviour
     {
         public Transform TooltipHandPosition;
         public Transform TooltipMessagePosition;
+        [TextArea] public string TooltipMessageText;
         public screenInteractions ScreenInteraction;
         public float RequiredDuration;
     }
@@ -28,16 +30,17 @@ public class InteractiveObject : MonoBehaviour
     private static GameObject _tooltipHand;
     [SerializeField] private List<Interactions> _interactions;
     private screenInteractions _currentInteraction;
+    [SerializeField] private UnityEvent _onFinishCurrentInteraction;
 
     public void Awake()
     {
         if(_tooltipHand == null)
-        _tooltipHand = GameObject.FindGameObjectWithTag("tooltipHand");
+        _tooltipHand = GameObject.FindGameObjectWithTag("TooltipHand");
         if(_tooltipMessage == null)
-        _tooltipMessage = GameObject.FindGameObjectWithTag("tooltipMessage");
+        _tooltipMessage = GameObject.FindGameObjectWithTag("TooltipMessage");
     }
 
-    public void StartInteraction(screenInteractions interaction)
+    public void StartInteraction(string interaction)
     {
         int interactionIndex = GetInteractionIndex(interaction);
         if(interactionIndex == -1)
@@ -45,28 +48,31 @@ public class InteractiveObject : MonoBehaviour
             Debug.LogError("The interactive object doesn't cotains the requested interaction");
             return;
         }
-        _currentInteraction = interaction;
+        _currentInteraction = _interactions[interactionIndex].ScreenInteraction;
         _tooltipHand.transform.position = _interactions[interactionIndex].TooltipHandPosition.position;
         _tooltipHand.transform.rotation = _interactions[interactionIndex].TooltipHandPosition.rotation;
         _tooltipMessage.transform.position = _interactions[interactionIndex].TooltipMessagePosition.position;
-        _tooltipMessage.GetComponent<Animator>().SetTrigger("SpawnMessage");
-        _tooltipHand.GetComponent<Animator>().SetBool($"Waitting{interaction.ToString()}Interaction", true);
+        _tooltipMessage.GetComponent<TooltipMessage>().SetMessage(_interactions[interactionIndex].TooltipMessageText);
+
+        _tooltipMessage.GetComponent<Animator>().SetTrigger("FadeIn");
+        _tooltipHand.GetComponent<Animator>().SetBool(interaction, true);
         ScreenInteractionSubscriptionHandler(true);
     }
 
     public void FinishInteraction()
     {
-        _tooltipMessage.GetComponent<Animator>().SetTrigger("HideMessage");
-        _tooltipHand.GetComponent<Animator>().SetBool("WaittingInteraction", false);
+        _tooltipMessage.GetComponent<Animator>().SetTrigger("FadeOut");
+        _tooltipHand.GetComponent<Animator>().SetBool(_currentInteraction.ToString(), false);
         ScreenInteractionSubscriptionHandler(false);
+        _onFinishCurrentInteraction?.Invoke();
     }
 
-    public int GetInteractionIndex(screenInteractions requestedInteraction)
+    public int GetInteractionIndex(string requestedInteraction)
     {
         int i = 0;
         foreach (var interaction in _interactions)
         {
-            if(interaction.ScreenInteraction == requestedInteraction)
+            if(interaction.ScreenInteraction.ToString() == requestedInteraction)
                 return i;
             i++;
         }
