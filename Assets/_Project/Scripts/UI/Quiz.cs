@@ -11,12 +11,15 @@ public class Quiz : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _multipleChoiceQuestionText;
     [SerializeField] private TextMeshProUGUI _trueFalseQuestionText;
     [SerializeField] private TextMeshProUGUI _results;
-
+    
     [SerializeField] private TMP_Dropdown _dropDown;
     [SerializeField] private QuizData _quiz;
 
+    [SerializeField] private GameObject _trueFalseButtons;
     [SerializeField] private GameObject _drowpDownPanel;
     [SerializeField] private GameObject _trueFalsePanel;
+    [SerializeField] private GameObject _rightAnswerPanel;
+    [SerializeField] private GameObject _wrongAnswerPanel;
     [SerializeField] private GameObject _ResultsPanel;
     private int _rightAnswers;
     
@@ -68,16 +71,11 @@ public class Quiz : MonoBehaviour
         _trueFalseQuestionText.text = _quiz.TrueFalseQuestions[_questionIndex].Question;
     }
 
-    public void CheckTrueFalseQuestion(bool answer)
+    public void CheckTrueFalseAnswer(bool answer)
     {
         if(_quiz.TrueFalseQuestions[_questionIndex].Answer == answer)
         {
             _rightAnswers++;
-        }
-
-        if(_questionIndex >= _quiz.TrueFalseQuestions.Count)
-        {
-            
         }
     }
 
