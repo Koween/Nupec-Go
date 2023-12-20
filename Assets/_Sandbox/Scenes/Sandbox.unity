@@ -2652,6 +2652,9 @@ MonoBehaviour:
   OnSwipe:
     m_PersistentCalls:
       m_Calls: []
+  _beingDrag: 0
+  _beingDragUp: 0
+  _beingTouch: 0
   OnTouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2664,6 +2667,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  _interactionElapsedTime: 0
 --- !u!114 &109625620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22533,7 +22537,7 @@ MonoBehaviour:
     TooltipMessageText: Toca el arenero para que la mascota se dirija a hacer sus
       necesidades.
     ScreenInteraction: 0
-    RequiredDuration: 0
+    RequiredSeconds: 4
   _onFinishCurrentInteraction:
     m_PersistentCalls:
       m_Calls:
