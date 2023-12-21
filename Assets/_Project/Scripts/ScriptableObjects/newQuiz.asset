@@ -21,5 +21,18 @@ MonoBehaviour:
     - "Insuficiencia renal cr\xF3nica."
     - Pancreatitis.
   _trueFalseQuestions:
-  - Question: 
+  - Question: "\xBFEl paciente enfermo urinario necesita consumir alta cantidad de
+      prote\xEDna en su dieta?"
+    Answer: 1
+  - Question: "\xBFEl paciente urinario debe consumir una cantidad controlada de
+      minerales? "
     Answer: 0
+  - Question: "\xBFEs necesario acidificar la orina del paciente con extracto de
+      ar\xE1ndano y metionina?"
+    Answer: 0
+  - Question: "\xBFEl paciente urinario necesita consumir en su dieta una baja cantidad
+      de calor\xEDas?"
+    Answer: 0
+  - Question: "\xBFLa carnitina es necesaria en la dieta de este paciente para movilizar
+      la grasa?"
+    Answer: 1

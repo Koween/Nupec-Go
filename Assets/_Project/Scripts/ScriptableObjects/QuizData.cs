@@ -10,14 +10,14 @@ public class QuizData : ScriptableObject
     [Serializable]
     public struct TrueFalseQuestion
     {
-        public string Question;
+        [TextArea] public string Question;
         public bool Answer;
     }
 
     [Serializable]
     public struct MultipleChoiceQuestion
     {
-        public string Question;
+        [TextArea] public string Question;
         public string Answer;
         public List<string> options;
     }

@@ -1312,7 +1312,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 50484607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678938137}
+        m_TargetAssemblyTypeName: Quiz, Assembly-CSharp
+        m_MethodName: CheckTrueFalseAnswer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &50484607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6992,7 +7004,7 @@ GameObject:
   - component: {fileID: 391939285}
   - component: {fileID: 391939284}
   m_Layer: 0
-  m_Name: Grade
+  m_Name: GradeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11179,7 +11191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &696183328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16329,7 +16341,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1184829754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678938137}
+        m_TargetAssemblyTypeName: Quiz, Assembly-CSharp
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 734752578}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1184829754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19693,9 +19729,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.003921569, g: 0.44313726, b: 0.7019608, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.40784314, g: 0.40784314, b: 0.40784314, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.003921569, g: 0.44313726, b: 0.7019608, a: 1}
+    m_PressedColor: {r: 0.03137255, g: 0.36078432, b: 0.5568628, a: 1}
+    m_SelectedColor: {r: 0.003921569, g: 0.44313726, b: 0.7019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -19714,7 +19750,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1381443004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678938137}
+        m_TargetAssemblyTypeName: Quiz, Assembly-CSharp
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1491339601}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1381443004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22105,9 +22165,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.003921569, g: 0.44313726, b: 0.7019608, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.40784314, g: 0.40784314, b: 0.40784314, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.003921569, g: 0.44313726, b: 0.7019608, a: 1}
+    m_PressedColor: {r: 0.03137255, g: 0.36078432, b: 0.5568628, a: 1}
+    m_SelectedColor: {r: 0.003921569, g: 0.44313726, b: 0.7019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -22126,7 +22186,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1523943192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678938137}
+        m_TargetAssemblyTypeName: Quiz, Assembly-CSharp
+        m_MethodName: CheckDropDownAnswer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1523943192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23122,7 +23194,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1572919829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678938137}
+        m_TargetAssemblyTypeName: Quiz, Assembly-CSharp
+        m_MethodName: StartMultipleChoiceQuiz
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 696183327}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1572919829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23669,7 +23765,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1602512288}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1678938137}
+        m_TargetAssemblyTypeName: Quiz, Assembly-CSharp
+        m_MethodName: CheckTrueFalseAnswer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1602512288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24820,7 +24928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1678938132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24930,15 +25038,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _multipleChoiceQuestionText: {fileID: 186872298}
   _trueFalseQuestionText: {fileID: 783650095}
-  _results: {fileID: 0}
+  _results: {fileID: 391939284}
   _dropDown: {fileID: 1353599421}
   _quiz: {fileID: 11400000, guid: b42fd646719c9e84f8a9e10c780042bb, type: 2}
   _trueFalseButtons: {fileID: 1816446781}
   _drowpDownPanel: {fileID: 1298909212}
   _trueFalsePanel: {fileID: 1610415497}
-  _rightAnswerPanel: {fileID: 0}
-  _wrongAnswerPanel: {fileID: 0}
-  _ResultsPanel: {fileID: 0}
+  _correctAnswerPanel: {fileID: 1491339601}
+  _incorrectAnswerPanel: {fileID: 734752578}
+  _ResultsPanel: {fileID: 802525842}
+  _comentText: {fileID: 1457597066}
+  _gradeColors:
+  - Color: {r: 0.6901961, g: 0.13725491, b: 0.14117648, a: 1}
+    requiredGrade: 2
+    commentText: Vuelve a intentarlo.
+  - Color: {r: 0.6745098, g: 0.627451, b: 0.16078432, a: 1}
+    requiredGrade: 5
+    commentText: "\xA1Bien! a\xFAn podemos mejorar."
+  - Color: {r: 0, g: 0.5058824, b: 0.007843138, a: 1}
+    requiredGrade: 6
+    commentText: "\xA1Felicidades! tus respuestas son correctas."
 --- !u!1 &1680802220
 GameObject:
   m_ObjectHideFlags: 0
@@ -28301,7 +28420,7 @@ GameObject:
   - component: {fileID: 1991692227}
   - component: {fileID: 1991692228}
   m_Layer: 0
-  m_Name: FalseButton (1)
+  m_Name: TrueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
