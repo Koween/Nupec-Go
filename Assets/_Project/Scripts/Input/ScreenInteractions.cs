@@ -47,12 +47,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
         else
             _beingTouch = false;
 
-        if(_beingDrag)
-        {
-            _interactionElapsedTime += Time.deltaTime;
-        }
-
-        if(_beingDragUp)
+        if(_beingDrag || _beingDragUp)
         {
             _interactionElapsedTime += Time.deltaTime;
         }
@@ -85,6 +80,13 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
 
     public void OnDrag(PointerEventData eventData)
     {
+
+        if(!_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask))
+        {
+           _beingDrag = false;
+           return; 
+        }
+        
         if(eventData.position != _dragPreviousPosition)
         {
             _beingDrag = true;
