@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,9 @@ public class PlanaResultsDocs : MonoBehaviour
 {
     [SerializeField] private List<Sprite> _docs;
     [SerializeField] private Image _docImage;
-    
+    [SerializeField] private TextMeshProUGUI _pageIndex;
+    [SerializeField] private Button _leftButton, _rightButton;
+
     private Animator _animator;
     [SerializeField] private int _docIndex;
 
@@ -16,6 +19,8 @@ public class PlanaResultsDocs : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _docImage = GetComponent<Image>();
+        _pageIndex.text = "1/1";
+        SetSideButtonsColors();
     }
 
     // Start is called before the first frame update
@@ -27,9 +32,25 @@ public class PlanaResultsDocs : MonoBehaviour
         
         if(_docIndex < 0)
             _docIndex = _docs.Count - 1;
+
+        _pageIndex.text = $"{_docIndex + 1}/{_docs.Count}";
+
+        SetSideButtonsColors();
         _animator.Play("PlanaDocFadeOut");
     }
 
+    private void SetSideButtonsColors()
+    {
+        if(_docIndex == _docs.Count - 1)
+        _rightButton.interactable = false;
+        else
+        _rightButton.interactable = true;
+        
+        if(_docIndex == 0)
+        _leftButton.interactable = false;
+        else
+        _leftButton.interactable = true;
+    }
 
     public void LoadDocument()
     {
