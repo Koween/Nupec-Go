@@ -19,7 +19,7 @@ public class ClinicalCaseIndicator : MonoBehaviour
     [SerializeField] private Color _completeBGColor;
     [SerializeField] private Color _currentBGColor;
     [SerializeField] private Transform _clinicalCasesContainer;
-
+    [SerializeField] private Sprite _checkIcon;
     [SerializeField] private TextMeshProUGUI _titleCase;
     [SerializeField] private TextMeshProUGUI _descriptionCase;
 
@@ -53,6 +53,7 @@ public class ClinicalCaseIndicator : MonoBehaviour
     private void SetCaseCompleted()
     {
         _currentCase.transform.GetChild(0).GetComponent<Image>().color = _completeBGColor;
+        _currentCase.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = _checkIcon;
         _currentCase.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = new Color(1,1,1,1);
     }
 
