@@ -22,8 +22,11 @@ public class ScreenToWorldRaycast : MonoBehaviour
 
         if (Physics.Raycast(worldPoint, out RaycastHit raycastHit, 1000, collisionLayerMask))
         {
-            _collisionCordinates = raycastHit.point;
-            return true;
+            if(raycastHit.collider.GetComponent<InteractiveObject>().InteractionEnable)
+            {
+                _collisionCordinates = raycastHit.point;
+                return true;
+            }
         }
         return false;
     }

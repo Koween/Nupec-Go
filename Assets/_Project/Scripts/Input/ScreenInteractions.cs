@@ -57,7 +57,6 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
     {
         if(_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask))
         {
-            
             _beingTouch = true;
         }
     }
@@ -68,6 +67,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
         {
             _beingTouch = false;
         }
+        _interactionElapsedTime = 0;
         
     }
 
@@ -94,7 +94,10 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
         }
 
         else
+        {
             _beingDrag = false;
+            _interactionElapsedTime = 0;
+        }
 
         var currentDirection = GetDragDirection();
         if(_lastDragDirection != currentDirection)
@@ -118,14 +121,12 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
         _beingDrag = false;
         _beingDragUp = false;
         OnSwipe?.Invoke();
-        
     }
 
     private Vector2 GetDragDirection()
     {
         Vector3 direction = _dragPreviousPosition - _dragStartPosition;
         direction.Normalize();
-        
         return direction;
     }
 }

@@ -28,9 +28,10 @@ public class InteractiveObject : MonoBehaviour
 
     private static GameObject _tooltipMessage;
     private static GameObject _tooltipHand;
-    [SerializeField] private List<Interactions> _interactions;
     private screenInteractions _currentScreenInteraction;
     private int _currenInteractionIndex;
+    public bool InteractionEnable{ get; set;}
+    [SerializeField] private List<Interactions> _interactions;
     [SerializeField] private UnityEvent _onFinishCurrentInteraction;
 
     public void Awake()
@@ -62,6 +63,7 @@ public class InteractiveObject : MonoBehaviour
 
     public void FinishInteraction()
     {
+        if(!InteractionEnable) return;
         _tooltipMessage.GetComponent<Animator>().SetTrigger("FadeOut");
         _tooltipHand.GetComponent<Animator>().SetBool(_currentScreenInteraction.ToString(), false);
         ScreenInteractionSubscriptionHandler(false);

@@ -50,6 +50,7 @@ public class ClinicalCaseIndicator : MonoBehaviour
         setCurrentCaseDescription();
     }
 
+    //configure the last case images and text as completed
     private void SetCaseCompleted()
     {
         _currentCase.transform.GetChild(0).GetComponent<Image>().color = _completeBGColor;

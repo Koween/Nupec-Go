@@ -9,8 +9,9 @@ public class PlanaResultsDocs : MonoBehaviour
 {
     [SerializeField] private List<Sprite> _docs;
     [SerializeField] private Image _docImage;
-    [SerializeField] private TextMeshProUGUI _pageIndex;
-    [SerializeField] private Button _leftButton, _rightButton;
+    [SerializeField] private TextMeshProUGUI _pageIndex, _continueButtonText;
+    [SerializeField] private Color _disableButtonTextColor;
+    [SerializeField] private Button _leftButton, _rightButton, _continueButton;
 
     private Animator _animator;
     [SerializeField] private int _docIndex;
@@ -20,7 +21,9 @@ public class PlanaResultsDocs : MonoBehaviour
         _animator = GetComponent<Animator>();
         _docImage = GetComponent<Image>();
         _pageIndex.text = "1/1";
+        _continueButton.interactable = false;
         SetSideButtonsColors();
+        _continueButtonText.color = _disableButtonTextColor;
     }
 
     // Start is called before the first frame update
@@ -32,6 +35,12 @@ public class PlanaResultsDocs : MonoBehaviour
         
         if(_docIndex < 0)
             _docIndex = _docs.Count - 1;
+
+        if(_docIndex == _docs.Count -1)
+        {    
+            _continueButton.interactable = true;
+            _continueButtonText.color = Color.white;
+        }
 
         _pageIndex.text = $"{_docIndex + 1}/{_docs.Count}";
 

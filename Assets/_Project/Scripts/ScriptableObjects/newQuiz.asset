@@ -20,6 +20,12 @@ MonoBehaviour:
     - Urolitiasis.
     - "Insuficiencia renal cr\xF3nica."
     - Pancreatitis.
+  - Question: "\xBFEsto es una prueba?"
+    Answer: "s\xED"
+    options:
+    - "s\xED"
+    - No
+    - Tal vez
   _trueFalseQuestions:
   - Question: "\xBFEl paciente enfermo urinario necesita consumir alta cantidad de
       prote\xEDna en su dieta?"
