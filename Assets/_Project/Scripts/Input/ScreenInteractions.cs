@@ -25,6 +25,10 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
     private ScreenToWorldRaycast _screenToWorldRaycast;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float _interactionElapsedTime;
+    [SerializeField] private bool _useLayerMask;
+    [SerializeField] private Canvas _screenInteractionsCanvas;
+
+    public bool UseLayerMask{get => _useLayerMask; set => _useLayerMask = value;}
 
     private void Awake()
     {
@@ -32,9 +36,15 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
         {
             Instance = this;
             _screenToWorldRaycast = GetComponent<ScreenToWorldRaycast>();
+            UseLayerMask = true;
         }
         else 
             Destroy(this);
+    }
+
+    public void ChangeSortOrder(int order)
+    {
+        _screenInteractionsCanvas.sortingOrder = order;
     }
 
     private void Update()
@@ -55,7 +65,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask))
+        if(_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask) || !UseLayerMask)
         {
             _beingTouch = true;
         }
@@ -81,7 +91,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerU
     public void OnDrag(PointerEventData eventData)
     {
 
-        if(!_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask))
+        if(!_screenToWorldRaycast.ThrowRayScreenToWorld(eventData.position, layerMask) && UseLayerMask)
         {
            _beingDrag = false;
            return; 
